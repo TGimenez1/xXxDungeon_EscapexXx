@@ -1,4 +1,4 @@
-package xXxDungeon_EscapexXx.Enemy;
+package xXxDungeon_EscapexXx.Weapon;
 
 public class a {
     
