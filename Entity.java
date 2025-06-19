@@ -11,7 +11,6 @@ public abstract class Entity {
         this.speed = speed;
     }
 
-    /* never below zero. */
     public void takeDamage(int damage) {
         hp = Math.max(hp - damage, 0);
     }
@@ -20,4 +19,15 @@ public abstract class Entity {
         return hp > 0;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public int getHp() {
+        return hp;
+    }
+
+    public int getSpeed() {
+        return speed;
+    }
 }
