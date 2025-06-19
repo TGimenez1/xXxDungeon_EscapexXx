@@ -1,5 +1,8 @@
 package xXxDungeon_EscapexXx;
 
-public abstract class Equipable {
-    
+
+public interface Equipable {
+   String getName();
+   void equip(Entity cible);
+   void unequip(Entity cible);
 }
