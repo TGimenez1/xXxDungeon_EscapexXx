@@ -40,13 +40,18 @@ public class Main {
         goblin.addLoot(new Weapon("Lame maudite", 25), 0.1);
 
         Enemy Baran = new Enemy("Baran - Roi des enfers", 100, 5, 1500, 30, 100);
-        goblin.addLoot(new Weapon("Longue lame de feu", 25), 0.6);
-        goblin.addLoot(new Weapon("Lame enragée", 50), 0.3);
-        goblin.addLoot(new Weapon("Katana des enfers", 90), 0.1);
+        Baran.addLoot(new Weapon("Longue lame de feu", 25), 0.6);
+        Baran.addLoot(new Weapon("Lame enragée", 50), 0.3);
+        Baran.addLoot(new Weapon("Katana des enfers", 90), 0.1);
+
 
         CombatManager manager = new CombatManager();
         manager.resolveCombat(p2, goblin);
-        manager.resolveCombat(p1, Baran);
+        manager.resolveCombat(p1, goblin);
+        
+        CombatManager manager2 = new CombatManager();
+        manager2.resolveCombat(p1, Baran);
+        
 
         // Inventaire après combat
         System.out.println("\nInventaire final de " + p2.getName() + " :");
