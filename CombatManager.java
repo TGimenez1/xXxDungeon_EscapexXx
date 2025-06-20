@@ -1,5 +1,6 @@
 package xXxDungeon_EscapexXx;
 
+import java.util.List;
 import java.util.Random;
 
 public class CombatManager {
@@ -32,6 +33,12 @@ public class CombatManager {
                     enemy.getName(),
                     enemy.getXpReward());
             player.gainXp(enemy.getXpReward());
+
+            List<Equipable> loot = enemy.rollLoot();
+            for (Equipable item : loot) {
+                player.depositToInventory(item);
+                System.out.printf("Loot obtenu : %s%n", item.getName());
+            }
         } else {
             System.out.println("You have been slain… Game over.");
         }
