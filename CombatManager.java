@@ -7,7 +7,7 @@ public class CombatManager {
     private final Random rng = new Random();
 
     public void resolveCombat(Player player, Enemy enemy) {
-        System.out.printf("A wild %s appears!%n", enemy.getName());
+        System.out.printf(" %s appears!%n", enemy.getName());
 
         boolean playerFirst = player.playerHasInitiative(enemy.getSpeed());
 
