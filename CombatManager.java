@@ -23,6 +23,8 @@ public class CombatManager {
                     playerAttack(player, enemy);
                 }
             }
+            //Re compute the initiative because of modifiers
+            playerFirst = player.playerHasInitiative(enemy.getSpeed());
         }
 
         if (player.isAlive()) {
