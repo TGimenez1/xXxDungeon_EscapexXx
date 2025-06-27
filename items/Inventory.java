@@ -1,4 +1,4 @@
-package xXxDungeon_EscapexXx;
+package xXxDungeon_EscapexXx.items;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,8 +1,11 @@
-package xXxDungeon_EscapexXx;
+package xXxDungeon_EscapexXx.world;
 
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
+
+import xXxDungeon_EscapexXx.managers.CombatManager;
+import xXxDungeon_EscapexXx.model.Player;
 
 public class Level {
     private List<Room> rooms;

@@ -1,6 +1,9 @@
-package xXxDungeon_EscapexXx;
+package xXxDungeon_EscapexXx.model;
 
 import java.util.Random;
+
+import xXxDungeon_EscapexXx.items.Equipable;
+import xXxDungeon_EscapexXx.items.Inventory;
 
 public class Player extends Entity {
     private Equipable equippedRight;

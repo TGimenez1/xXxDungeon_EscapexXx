@@ -1,6 +1,9 @@
-package xXxDungeon_EscapexXx;
+package xXxDungeon_EscapexXx.managers;
 
 import java.util.List;
+
+import xXxDungeon_EscapexXx.items.Equipable;
+import xXxDungeon_EscapexXx.model.Player;
 
 public class LootManager {
 

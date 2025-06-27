@@ -1,8 +1,13 @@
-package xXxDungeon_EscapexXx;
+package xXxDungeon_EscapexXx.managers;
 
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
+
+import xXxDungeon_EscapexXx.items.Equipable;
+import xXxDungeon_EscapexXx.items.Weapon;
+import xXxDungeon_EscapexXx.model.Enemy;
+import xXxDungeon_EscapexXx.model.Player;
 
 public class CombatManager {
     private final Random rng = new Random();

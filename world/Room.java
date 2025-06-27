@@ -1,6 +1,10 @@
-package xXxDungeon_EscapexXx;
+package xXxDungeon_EscapexXx.world;
 
 import java.util.Scanner;
+
+import xXxDungeon_EscapexXx.managers.CombatManager;
+import xXxDungeon_EscapexXx.model.Enemy;
+import xXxDungeon_EscapexXx.model.Player;
 
 public class Room {
     private static final Scanner SCANNER = new Scanner(System.in);

@@ -1,4 +1,6 @@
-package xXxDungeon_EscapexXx;   
+package xXxDungeon_EscapexXx.items;
+
+import xXxDungeon_EscapexXx.model.Entity;
 
 public interface Equipable {
     String getName();

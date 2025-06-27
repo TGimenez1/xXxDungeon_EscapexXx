@@ -1,4 +1,4 @@
-package xXxDungeon_EscapexXx;
+package xXxDungeon_EscapexXx.model;
 
 public abstract class Entity {
     protected String name;

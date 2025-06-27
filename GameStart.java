@@ -1,6 +1,12 @@
 package xXxDungeon_EscapexXx;
 
 import java.util.Scanner;
+
+import xXxDungeon_EscapexXx.managers.CombatManager;
+import xXxDungeon_EscapexXx.model.Enemy;
+import xXxDungeon_EscapexXx.model.Player;
+import xXxDungeon_EscapexXx.world.Room;
+
 import java.util.Random;
 import java.util.List;
 

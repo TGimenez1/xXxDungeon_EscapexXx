@@ -1,4 +1,6 @@
-package xXxDungeon_EscapexXx;
+package xXxDungeon_EscapexXx.items;
+
+import xXxDungeon_EscapexXx.model.Entity;
 
 public class Weapon implements Equipable {
     private String name;

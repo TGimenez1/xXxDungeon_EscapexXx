@@ -1,6 +1,9 @@
-package xXxDungeon_EscapexXx;
+package xXxDungeon_EscapexXx.model;
 
 import java.util.*;
+
+import xXxDungeon_EscapexXx.items.Equipable;
+import xXxDungeon_EscapexXx.items.Weapon;
 
 public class Enemy extends Entity {
     private final int xpReward;
