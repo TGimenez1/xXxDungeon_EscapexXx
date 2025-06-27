@@ -2,6 +2,7 @@ package xXxDungeon_EscapexXx;
 
 import java.util.List;
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 public class CombatManager {
     private final Random rng = new Random();
@@ -15,17 +16,36 @@ public class CombatManager {
         while (player.isAlive() && enemy.isAlive()) {
             if (playerFirst) {
                 playerAttack(player, enemy);
+                //Wait a bit
+                            try {
+                TimeUnit.MILLISECONDS.sleep(500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
                 if (enemy.isAlive()) {
                     enemyAttack(enemy, player);
                 }
             } else {
                 enemyAttack(enemy, player);
+                                //Wait a bit
+                            try {
+                TimeUnit.MILLISECONDS.sleep(500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
                 if (player.isAlive()) {
                     playerAttack(player, enemy);
                 }
+                
             }
-            //Re compute the initiative because of modifiers
+            // Re compute the initiative because of modifiers
             playerFirst = player.playerHasInitiative(enemy.getSpeed());
+            //Wait
+            try {
+                TimeUnit.MILLISECONDS.sleep(1200);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
 
         if (player.isAlive()) {
