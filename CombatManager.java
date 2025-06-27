@@ -42,7 +42,7 @@ public class CombatManager {
             playerFirst = player.playerHasInitiative(enemy.getSpeed());
             //Wait
             try {
-                TimeUnit.MILLISECONDS.sleep(1200);
+                TimeUnit.MILLISECONDS.sleep(800);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -53,11 +53,15 @@ public class CombatManager {
                     enemy.getName(),
                     enemy.getXpReward());
             player.gainXp(enemy.getXpReward());
-
+            //Re equilibrage
+            int hpgain = player.getPlayerLevel()*5;
+            System.out.printf("You absorb its soul and gain %d hp.%n",
+                    hpgain);
+            player.heal(hpgain);
             List<Equipable> loot = enemy.rollLoot();
             LootManager.handleDrops(player, loot);
         } else {
-            System.out.println("You have been slain… Game over.");
+            System.out.println("You have been slain... Game over.");
         }
     }
 
@@ -73,8 +77,8 @@ public class CombatManager {
 
         if (item == null) {
             // If no item equipped :
-            // unarmed jab: 70–100% of (playerLevel * 3)
-            int base = player.getPlayerLevel() * 3;
+            // unarmed jab: 70–100% of (playerLevel * 5)
+            int base = player.getPlayerLevel() * 5 ;
             int damage = rng.nextInt(base * 3 / 10 + 1) + base * 7 / 10;
             enemy.takeDamage(damage);
             System.out.printf("%s jabs %s with its %s for %d damage!%n",

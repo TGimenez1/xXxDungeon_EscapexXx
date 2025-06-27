@@ -6,8 +6,8 @@ import java.util.List;
 
 public class GameStart {
     public static void main(String[] args) {
-        Scanner scanner       = new Scanner(System.in);
-        Random rand           = new Random();
+        Scanner scanner = new Scanner(System.in);
+        Random rand = new Random();
         CombatManager manager = new CombatManager();
 
         // Menu principal
@@ -39,8 +39,8 @@ public class GameStart {
 
             // Boucle de progression par niveau
             while (true) {
-                System.out.println("\n--- Niveau " + level 
-                    + " | PV: " + player.getHp() + " | XP: " + player.getXp() + " ---");
+                System.out.println("\n--- Niveau " + level
+                        + " | PV: " + player.getHp() + " | XP: " + player.getXp() + " ---");
 
                 // Génération de deux salles possibles (boss inclus)
                 Room roomA = makeRoom(rand, level);
@@ -52,19 +52,18 @@ public class GameStart {
                 System.out.print("Choisissez une salle (1/2): ");
                 int sel = scanner.nextInt();
 
-                Room chosen   = (sel == 1 ? roomA : roomB);
+                Room chosen = (sel == 1 ? roomA : roomB);
                 Room alternative = (sel == 1 ? roomB : roomA);
 
                 // Entrée dans la salle
                 boolean survived = chosen.enter(player, manager);
                 if (!survived) {
-                    System.out.println("Vous êtes mort… GAME OVER");
                     return;
                 }
 
                 // Si c'était le boss et qu'il est vaincu, on passe au level suivant
                 if (chosen.isBossRoom()) {
-                    System.out.println("Boss vaincu ! Vous passez au niveau " + (level+1));
+                    System.out.println("Boss vaincu ! Vous passez au niveau " + (level + 1));
                     level++;
                     break; // sort de la boucle de ce niveau
                 }
@@ -84,21 +83,20 @@ public class GameStart {
         Enemy e;
         if (boss) {
             List<String> bosses = List.of(
-                "Baran, Roi des Enfers",
-                "Beru, Prince des Fourmis",
-                "Igris, Chevalier Royal",
-                "Khan, Seigneur des Laves"
-            );
-            String bossName = bosses.get((level-1) % bosses.size());
-            e = new Enemy(bossName, 200 + level*50, rand.nextInt(10)+5,
-                100 + level*50, 20*level, 30*level);
+                    "Baran, Roi des Enfers",
+                    "Beru, Prince des Fourmis",
+                    "Igris, Chevalier Royal",
+                    "Khan, Seigneur des Laves");
+            String bossName = bosses.get((level - 1) % bosses.size());
+            e = new Enemy(bossName, 100 + level * 50, rand.nextInt(10) + 5,
+                    100 + level * 50, 15 * level, 25 * level);
             e.initBossLoot(level);
         } else {
-            String[] names = {"Gobelin","Orc","Squelette","Rat géant"};
+            String[] names = { "Gobelin", "Orc", "Squelette", "Rat géant" };
             String mName = names[rand.nextInt(names.length)];
-            e = new Enemy(mName, 20*level + rand.nextInt(11),
-                rand.nextInt(10)+1, 10*level + rand.nextInt(11),
-                5*level, 8*level);
+            e = new Enemy(mName, 20 * level + rand.nextInt(11),
+                    rand.nextInt(10) + 1, 10 * level + rand.nextInt(11),
+                    5 * level, 8 * level);
             e.initStandardLoot(level);
         }
         return new Room(e, boss);
@@ -110,17 +108,41 @@ public class GameStart {
             System.out.println("\nQue voulez-vous faire ? 1) Continuer  2) Rééquiper  3) Quitter");
             System.out.print("Choix: ");
             int c = sc.nextInt();
-            if (c == 1) return;   // renvoie au choix de salle
+            if (c == 1)
+                return; // renvoie au choix de salle
             if (c == 2) {
+                // Show inventory
                 player.getInventory().printInventory();
+                // Show equipped
+                System.out.printf("Main droite : %s%n",
+                        player.getEquippedRight() != null
+                                ? player.getEquippedRight().getName()
+                                : "Rien");
+                System.out.printf("Main gauche : %s%n",
+                        player.getEquippedLeft() != null
+                                ? player.getEquippedLeft().getName()
+                                : "Rien");
+                System.out.println("Remplacez avec les indexs (0 pour garder)");
                 System.out.print("Index main droite: ");
                 int r = sc.nextInt();
-                player.unequipRight();
-                player.equipRight(player.getInventory().getItems().get(r));
+                if (r == 0) {
+                    // Aucun changement
+                } else if (r >= 1 && r <= player.getInventory().size()) {
+                    player.unequipRight();
+                    player.equipRight(player.getInventory().getItems().get(r - 1));
+                } else {
+                    System.out.println("Index invalide pour la main droite, aucun changement.");
+                }
                 System.out.print("Index main gauche: ");
                 int l = sc.nextInt();
-                player.unequipLeft();
-                player.equipLeft(player.getInventory().getItems().get(l));
+                if (l == 0) {
+                    // Aucun changement
+                } else if (l >= 1 && l <= player.getInventory().size()) {
+                    player.unequipLeft();
+                    player.equipLeft(player.getInventory().getItems().get(l - 1));
+                } else {
+                    System.out.println("Index invalide pour la main gauche, aucun changement.");
+                }
             } else {
                 System.out.println("Fin de partie.");
                 System.exit(0);

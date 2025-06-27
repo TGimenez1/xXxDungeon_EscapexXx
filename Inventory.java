@@ -34,13 +34,19 @@ public class Inventory {
         return items;
     }
 
+    public int size() {
+        return items.size();
+    }
+
     public void printInventory() {
         if (items.isEmpty()) {
             System.out.println("Inventaire vide.");
         } else {
+            int count = 1;
             System.out.println("Contenu :");
             for (Equipable item : items) {
-                System.out.println("- " + item.getName());
+                System.out.println(count + " - " + item.getName());
+                count++;
             }
         }
     }

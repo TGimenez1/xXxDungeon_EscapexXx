@@ -13,7 +13,7 @@ public class Player extends Entity {
     public Player(String name, int hp, int speed) {
         super(name, hp, speed);
         this.equippedRight = null;
-        this.equippedLeft  = null;
+        this.equippedLeft  = null;  
         this.inventory     = new Inventory();
         this.xp            = 0;
         this.playerLevel   = 1;
@@ -24,6 +24,7 @@ public class Player extends Entity {
     }
 
     public void equipRight(Equipable item) {
+        inventory.remove(item);
         if (equippedRight != null) {
             Equipable old = equippedRight;
             old.unequip(this);
@@ -47,6 +48,7 @@ public class Player extends Entity {
     }
 
     public void equipLeft(Equipable item) {
+        inventory.remove(item);
         if (equippedLeft != null) {
             Equipable old = equippedLeft;
             old.unequip(this);
@@ -109,4 +111,3 @@ public class Player extends Entity {
         return playerRoll >= enemyRoll;
     }
 }
-  

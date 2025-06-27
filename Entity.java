@@ -15,6 +15,10 @@ public abstract class Entity {
         hp = Math.max(hp - damage, 0);
     }
 
+    public void heal(int amount) {
+        hp += amount;
+    }
+
     public boolean isAlive() {
         return hp > 0;
     }
