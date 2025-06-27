@@ -35,10 +35,7 @@ public class CombatManager {
             player.gainXp(enemy.getXpReward());
 
             List<Equipable> loot = enemy.rollLoot();
-            for (Equipable item : loot) {
-                player.depositToInventory(item);
-                System.out.printf("Loot obtenu : %s%n", item.getName());
-            }
+            LootManager.handleDrops(player, loot);
         } else {
             System.out.println("You have been slain… Game over.");
         }
