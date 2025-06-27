@@ -11,6 +11,18 @@ public class Inventory {
     }
 
     public void add(Equipable item) {
+        // count existing items with the same name
+        int sameCount = 0;
+        for (Equipable existing : items) {
+            if (existing.getName().equals(item.getName())) {
+                sameCount++;
+                if (sameCount >= 2) {
+                    // If more than two already exist, skip them. So no bloating.
+                    return;
+                }
+            }
+        }
+        // if we get here, sameCount is 0 or 1
         items.add(item);
     }
 
